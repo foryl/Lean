@@ -19,6 +19,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using QuantConnect.Logging;
 using QuantConnect.Util;
 
 namespace QuantConnect.Data.Auxiliary
@@ -48,6 +49,7 @@ namespace QuantConnect.Data.Auxiliary
             _mapFilesByPermtick = new Dictionary<string, MapFile>(StringComparer.InvariantCultureIgnoreCase);
             _bySymbol = new Dictionary<string, SortedList<DateTime, MapFileRowEntry>>(StringComparer.InvariantCultureIgnoreCase);
 
+            Log.Trace("MapFileResolver() start");
             foreach (var mapFile in mapFiles)
             {
                 // add to our by path map
@@ -78,6 +80,7 @@ namespace QuantConnect.Data.Auxiliary
                     }
                 }
             }
+            Log.Trace("MapFileResolver() end");
         }
 
         /// <summary>
